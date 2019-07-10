@@ -1,0 +1,28 @@
+<form [formGroup]="reactiveForm">
+  <div class="border-component">
+    <app-first-form formControlName="firstForm"></app-first-form>
+  </div>
+  <div class="border-component">
+    <app-second-form formControlName="secondForm"></app-second-form>
+  </div>
+
+  <h3 class="first">Basic</h3>
+  <div class="ui-g" style="width:250px;margin-bottom:10px" *ngFor="let item of checkboxOption;">
+    <div class="ui-g-12">
+      <p-radioButton ui-chkbox name="sla" [value]="item.value" [label]="item.label" formControlName="isAccept">
+      </p-radioButton>
+    </div>
+  </div>
+  <textarea pInputTextarea [disabled]="isAcceptForm" formControlName="textMessage"></textarea>
+</form>
+
+
+<p>Value:</p>
+<pre>{{ reactiveForm.value | json }}</pre>
+
+<p>form is valid: {{ validate() }}</p>
+
+
+<div *ngIf="validate()">
+  <p-button label="Click" type="submit"></p-button>
+</div>
